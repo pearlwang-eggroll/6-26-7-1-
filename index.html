@@ -131,9 +131,150 @@ header h1 { font-size:2.2rem; }
 <!-- HOME -->
 <div id="home" class="day-content active">
 
-    <!-- 👉 你原本 intro-section 放這裡（完全不動） -->
-    <!-- 我這裡先保留位置 -->
-    <p style="text-align:center;">👇 旅遊前言請保留你原本內容貼回來</p>
+    <!-- ==================== 旅遊前言區塊 開始 ==================== -->
+<style>
+    /* 前言區塊專用樣式 */
+    .intro-section {
+        max-width: 800px;
+        margin: -1rem auto 2rem auto;
+        padding: 0 1rem;
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 1.5rem;
+    }
+    @media screen and (max-width: 768px) {
+        .intro-section {
+            grid-template-columns: 1fr;
+        }
+    }
+    .intro-card {
+        background: white;
+        padding: 1.5rem;
+        border-radius: 12px;
+        box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+        border-top: 5px solid #2a5298;
+    }
+    .intro-card h2 {
+        color: #1e3c72;
+        font-size: 1.2rem;
+        margin-bottom: 1rem;
+        display: flex;
+        align-items: center;
+        gap: 0.5rem;
+    }
+    /* 天氣小工具樣式 */
+    .weather-widget {
+        display: flex;
+        align-items: center;
+        justify-content: space-around;
+        background: #f0f4f8;
+        padding: 1rem;
+        border-radius: 8px;
+        margin-bottom: 0.8rem;
+    }
+    .weather-temp {
+        font-size: 1.8rem;
+        font-weight: bold;
+        color: #1e3c72;
+    }
+    .weather-info {
+        font-size: 0.9rem;
+        color: #555;
+    }
+    /* 行李清單樣式 */
+    .packing-list {
+        list-style: none;
+    }
+    .packing-item {
+        display: flex;
+        align-items: center;
+        gap: 0.5rem;
+        margin-bottom: 0.5rem;
+        font-size: 0.95rem;
+        color: #444;
+        cursor: pointer;
+    }
+    .packing-item input[type="checkbox"] {
+        width: 16px;
+        height: 16px;
+        cursor: pointer;
+    }
+    /* 旅遊宣言樣式 */
+    .declaration-card {
+        grid-column: 1 / -1;
+        background: linear-gradient(135deg, #fff9db 0%, #fff3bf 100%);
+        border-top: 5px solid #f59f00;
+    }
+    .declaration-text {
+        font-style: italic;
+        color: #664d03;
+        line-height: 1.8;
+        font-size: 1.05rem;
+        position: relative;
+        padding-left: 1.5rem;
+    }
+    .declaration-text::before {
+        content: "“";
+        font-size: 3rem;
+        position: absolute;
+        left: -0.5rem;
+        top: -1rem;
+        color: #fab005;
+        opacity: 0.5;
+    }
+</style>
+
+<div class="intro-section">
+    
+    <!-- 1. 當地天氣預報卡片 -->
+    <div class="intro-card">
+        <h2>☀️ 目的地天氣預報</h2>
+        <div class="weather-widget">
+            <div style="font-size: 2.5rem;">🌤️</div>
+            <div>
+                <div class="weather-temp">12°C - 25°C</div>
+                <div class="weather-info">北海道夏季 | 日夜溫差大<BR>前兩天有下雨機率</div>
+            </div>
+        </div>
+        <p class="tips" style="margin-top: 0.5rem;">
+            06.26 富良野 15°C - 22°C 降雨機率90%<BR>
+            06.27 富良野 13°C - 21°C 降雨機率70%<BR>
+            06.28 富良野 11°C - 20°C<BR>
+            06.29 札幌市 13°C - 24°C<BR>
+            06.30 札幌市 14°C - 25°C<BR>
+            07.01 札幌市 15°C - 26°C
+            
+        </p>
+    </div>
+
+    <!-- 2. 行李準備檢查清單 -->
+    <div class="intro-card">
+        <h2>🧳 出發前行李檢查</h2>
+        <ul class="packing-list">
+            <li class="packing-item"><input type="checkbox"> 護照正本 (效期需滿6個月以上)</li>
+            <li class="packing-item"><input type="checkbox"> 手機、漫遊網卡、充電線</li>
+            <li class="packing-item"><input type="checkbox"> 行動電源 (需隨身攜帶，不可托運)</li>
+            <li class="packing-item"><input type="checkbox"> 常用藥品 (血壓藥、慢性病藥、OK蹦)</li>
+            <li class="packing-item"><input type="checkbox"> 舒適好走的運動鞋或健走鞋</li>
+            <li class="packing-item"><input type="checkbox"> 怕冷的請備薄長袖，請所有人都帶件外套</li>
+            <li class="packing-item"><input type="checkbox"> 日幣現金、海外高回饋信用卡</li>
+            <li class="packing-item"><input type="checkbox"> 身上有繪畫的人，進出海關時請穿長袖擋住不露出</li>
+            <li class="packing-item">住宿有附浴巾及吹風機，所以不介意的可以不用自備浴巾</li>
+        </ul>
+    </div>
+
+    <!-- 3. 長輩旅遊宣言（橫跨兩欄） -->
+    <div class="intro-card declaration-card">
+        <h2>家族旅遊共同宣言</h2>
+        <div class="declaration-text">
+            <strong>「出來玩，最要緊的就是歡喜與平安！」</strong><br>
+            本次旅程特別恪守原則：不生氣、不比較、不抱怨、不錯過<BR>要多拍照、要享受當下、累了隨時要休息！<BR>遇到美景就停下來，肚子餓了就吃美食<BR>沿途的風景因為有你們的陪伴才是最珍貴的<BR>祝福大家滿載而歸！
+        </div>
+    </div>
+
+</div>
+<!-- ==================== 旅遊前言區塊 結束 ==================== -->
+
 
 </div>
 
@@ -141,7 +282,60 @@ header h1 { font-size:2.2rem; }
 <div id="day1" class="day-content">
 <div class="day-title">DAY 1 06/26 富良野</div>
 <div class="timeline">
-<!-- 你 DAY1 原內容貼這裡 -->
+  <!-- ==================== DAY 1 開始 ==================== -->
+        <div class="day-title">DAY 1 06/26 富良野</div>
+        
+        <div class="timeline">
+            
+            <!-- 景點卡片 1 (交通) -->
+            <div class="timeline-item">
+                <span class="time">03:00(台灣時間)</span>
+                <div class="title">司機  RFR-5139 先接叔再接金家去機場</div>
+                <span class="time">03:15(台灣時間)</span>
+                <div class="title">司機  阿杰 到龜山接大亨組出發去機場</div>
+            </div>
+            
+            <div class="timeline-item">
+                <span class="time">06:20(台灣時間) - 11:05(日本時間)</span>
+                <div class="title">桃園機場 → 新千歲機場</div>
+                <span class="tag tag-transport">交通</span>
+                <p class="description">搭乘虎航 IT234 班機<br>抵達後於機場裡的成吉思汗先吃一頓烤羊肉<br>再去與租車公司約好的地點等待租車公司來接機</p>
+            </div>
+
+            <div class="timeline-item">
+                <span class="time">14:00左右</span>
+                <div class="title">租車公司→富良野住宿CHECK IN</div>
+                <span class="tag tag-hotel">住宿</span>
+                <p class="description">住宿名稱	PURPURE FURANO<br>地址	〒071-0543北海道空知郡上富良野町中町 1丁目 2-24</p>
+            </div>
+
+            <div class="timeline-item">
+                <span class="time">16:30</span>
+                <div class="title">精靈露台</div>
+                <span class="tag tag-scenery">景點</span>
+                <a href="https://www.visit-hokkaido.jp/tw/spot/detail_11270.html" target="_blank" class="btn">介紹網站</a>
+                <p class="description">營業時間：12:00-20:45<br>免門票、免費停車</p>
+            </div>
+
+            <div class="timeline-item">
+                <span class="time">18:00</span>
+                <div class="title">晚餐：迴轉壽司</div>
+                <span class="tag tag-food">美食</span>
+                <a href="https://www.topical-sushi.jp/" target="_blank" class="btn">介紹網站</a>
+                <p class="description">營業時間11:00~20:30<BR>地址：北海地道富良野市若松町9-6 076-0032</p>
+            </div>
+
+            <!-- 景點卡片 4 (景點) -->
+            <div class="timeline-item">
+                <span class="time">20:00餐後散步</span>
+                <div class="title">超級市場</div>
+                <span class="tag tag-scenery">景點</span>
+                <a href="https://www.douhoku-arcs.co.jp/" target="_blank" class="btn">介紹網站</a>
+                <p class="description">逛超級市場，並先買隔天早餐</p>
+            </div>
+
+        </div>
+        <!-- ==================== DAY 1 結束 ==================== -->
 </div>
 </div>
 
@@ -149,7 +343,68 @@ header h1 { font-size:2.2rem; }
 <div id="day2" class="day-content">
 <div class="day-title">DAY 2 06/27 美瑛</div>
 <div class="timeline">
-<!-- DAY2 原內容 -->
+
+<!-- ==================== DAY 2 開始 ==================== -->
+        <div class="day-title">DAY 2 06.27 美瑛</div>
+
+        <div class="timeline">
+            
+            <!-- 景點卡片 1 -->
+            <div class="timeline-item">
+                <span class="time">08:00</span>
+                <div class="title">白金青池</div>
+                <span class="tag tag-scenery">景點</span>
+                <img src="https://www.visit-hokkaido.jp/lsc/upfile/spot/0001/0511/10511_1_l.jpg" style="max-width: 100%; height: auto;">
+                <p class="description">夏季的白金青池在明亮的陽光照映下，可以欣賞到湖面更為鮮明的天藍色，是其魅力所在<br>5月到6月下旬的初夏時節是一年之中湖水最為清澈的時期，有許多觀光客會選在此時造訪白金青池<BR>停車費： 500 日幣/ 次</p>
+            </div>
+
+            <div class="timeline-item">
+                <span class="time">09:30</span>
+                <div class="title">白鬚瀑布</div>
+                <span class="tag tag-scenery">景點</span>
+                <img src="https://yukigo.tw/wp-content/uploads/2023/09/%E7%99%BD%E9%AC%9A%E7%80%91%E5%B8%83.jpg" style="max-width: 100%; height: auto;">
+                <p class="description">站在「白金觀光大橋」上拍攝是捕捉壯麗美景的最佳位置<BR>必拍亮點：藍白強烈對比、低角度取景法、搭配青池同框<BR>不用門票，但停車位很少<BR>停車可以停在美瑛町觀光案內所這邊<BR>走到瀑布約五分鐘，建議行程約 30M-1H( 位於白金青池的隔壁)</p>
+            </div>
+
+            <div class="timeline-item">
+                <span class="time">11:30</span>
+                <div class="title">午餐：北海道名物スープカレー専門店 KINGBEAR美瑛店</div>
+                <span class="tag tag-food">美食</span>
+                <img src="https://www.biei-hokkaido.jp/wp3/wp-content/uploads/2025/05/KINGBEAR002.jpg" style="max-width: 100%; height: auto;">
+                <a href="https://www.instagram.com/p/DIp86UZStKf/" target="_blank" class="btn">停車資訊</a>
+                <p class="description">主打：湯咖哩<BR>地址：1 Chome-4-17 Nakamachi, Biei, Kamikawa District, Hokkaido 071-0207</p>
+            </div>
+
+              <div class="timeline-item">
+                <span class="time">14:00</span>
+                <div class="title">美瑛選果-買麵包</div>
+                <span class="tag tag-scenery">景點、伴手禮</span> 
+                <img src="https://flyblog.cc/wp-content/uploads/2025/12/biei-fruit-01.jpg" style="max-width: 100%; height: auto;">
+                <a href="https://bieisenka.jp/about/" target="_blank" class="btn">網站介紹</a>
+                <p class="description">聽說超人氣吐司很推推，還有紅豆和黑豆麵包<BR>地址：北海道上川郡美瑛町大町2丁目</p>
+            </div>
+
+             <div class="timeline-item">
+                <span class="time">15:30</span>
+                <div class="title">四季彩之丘</div>
+                <span class="tag tag-scenery">景點</span>
+                <img src="https://mimigo.tw/wp-content/uploads/20180830120053_42.jpg" style="max-width: 100%; height: auto;">
+                <a href="https://www.shikisainooka.jp" target="_blank" class="btn">介紹網站</a>
+                <p class="description">必拍盛開的魯冰花、冰島罌粟、東方罌粟與風鈴草<BR>想要進入四季彩之丘需要支付門票<BR>高中生以上收費為500日圓、小學生及中學生為300日圓、小學生以下則免費<BR>除了門票以外，園內還有其他有趣的交通遊戲設施，分別費用如下<BR>諾洛克號（遊園車）15分鐘 ：高中生以上收費為500日圓、小學生及中學生為300日圓、小學生以下則免費<BR>越野車：1人乘坐：800日元、2人座：1,200日元<BR>推車15分鐘 ：4人座/1輛：2,500日元<BR>地址：日本〒071-0473 Hokkaido, Kamikawa District, Biei, Shinsei, 第３</p>
+            </div>
+
+            <div class="timeline-item">
+                <span class="time">17:30</span>
+                <div class="title">晚餐：第一食堂Daiichi Syokudo</div>
+                <span class="tag tag-food">美食</span>
+                <img src="https://lh3.googleusercontent.com/pw/AP1GczNTo3mShLsRlH1spsK4s0YNx-Z0emPjU9dtuJb-PauCKa9EBm5ENs_qEHeulruo4HlKtFvmv2W42f-qhTDEpM1m3CiXLHL_ZrEF9si1qxdgBFJJtzYTFF_TXV6a0d1X5S-cGFUd4dApFZVL2LU6-MeO2Q=w1424-h1424-s-no-gm?authuser=0" style="max-width: 100%; height: auto;">
+                <a href="https://sites.google.com/view/dai1shokudou/" target="_blank" class="btn">介紹網站</a>
+                <p class="description">定食、拉麵、丼飯<BR>家常麵的回味滿足，勝過大魚大肉<BR>地址：1 Chome-4-4 Nakamachi, Kamifurano, Sorachi District, Hokkaido 071-0543日本</p>
+            </div>
+          </div>
+      
+        <!-- ==================== DAY 2 結束 ==================== -->
+    
 </div>
 </div>
 
@@ -158,6 +413,58 @@ header h1 { font-size:2.2rem; }
 <div class="day-title">DAY 3 06/28 富良野</div>
 <div class="timeline">
 <!-- DAY3 原內容 -->
+ <!-- ==================== DAY 3 開始 ==================== -->
+        <div class="day-title">DAY 3 06.28 富良野</div>
+
+        <div class="timeline">
+            
+            <!-- 景點卡片 1 -->
+            <div class="timeline-item">
+                <span class="time">08:00</span>
+                <div class="title">富良野起司工房</div>
+                <span class="tag tag-scenery">景點</span>
+                <img src="https://pic.pimg.tw/purpleswallow/1715658710-1455403348-g_n.jpg" style="max-width: 100%; height: auto;">
+                <p class="description">有販售當天新鮮的牛奶，裝在玻璃瓶的牛奶看起來超好喝，大推<BR>地址：2340-3 Naka5ku, Furano, Hokkaido 076-0013日本</p>
+            </div>
+
+            <div class="timeline-item">
+                <span class="time">11:00</span>
+                <div class="title">午餐：富良野起司工房的披薩</div>
+                <span class="tag tag-food">美食</span>
+                <img src="https://tblg.k-img.com/restaurant/images/Rvw/318774/640x640_rect_74a2f8da63539281024eb4600ce7b72e.jpg" style="max-width: 100%; height: auto;">
+                <p class="description">主打：披薩+手工冰淇淋</p>
+            </div>
+
+              <div class="timeline-item">
+                <span class="time">13:00</span>
+                <div class="title">富田農場</div>
+                <span class="tag tag-scenery">景點</span> 
+                <img src="https://www.farm-tomita.co.jp/cn/farm/img/flowerMap202107.jpg?ver=1" style="max-width: 100%; height: auto;">
+                <a href="https://www.farm-tomita.co.jp/cn/" target="_blank" class="btn">網站介紹</a>
+                <p class="description">必吃薰衣草霜淇淋與現切哈密瓜<BR>營業時間：10-16  免門票、免費停車</p>
+            </div>
+
+             <div class="timeline-item">
+                <span class="time">15:00</span>
+                <div class="title">哈蜜瓜農場</div>
+                <span class="tag tag-scenery">景點</span>
+                <img src="https://mimigo.tw/wp-content/uploads/20180925180215_96.jpg" style="max-width: 100%; height: auto;">
+                <a href="https://www.facebook.com/tomitamelonhouse" target="_blank" class="btn">介紹網站</a>
+                <p class="description">夏季限定的農場<BR>可以先買半個哈密瓜，再到旁邊的冰淇淋店去加購冰淇淋，價格會比較便宜，算是一種組合價的概念<BR>地址：北海道空知郡中富良野町宮町3-32<BR>營業時間：09:00~17:00（6~9月限定，其他時間公休)</p>
+            </div>
+
+            <div class="timeline-item">
+                <span class="time">17:30</span>
+                <div class="title">晚餐：富川製麵所</div>
+                <span class="tag tag-food">美食</span>
+                <img src="https://i0.wp.com/listentolu.com/wp-content/uploads/DSC08390.jpg?resize=1024%2C1536&ssl=1" style="max-width: 100%; height: auto;">
+                <a href="https://sites.google.com/view/dai1shokudou/" target="_blank" class="btn">介紹網站</a>
+                <p class="description">米其林認證的道北好味拉麵<BR>地址：日本、〒076-0025 北海道富良野市日の出町１２−２２</p>
+            </div>
+          </div>
+
+        <!-- ==================== DAY 3 結束 ==================== -->
+    
 </div>
 </div>
 
@@ -166,6 +473,63 @@ header h1 { font-size:2.2rem; }
 <div class="day-title">DAY 4 06/29 小樽</div>
 <div class="timeline">
 <!-- DAY4 原內容 -->
+
+    <!-- ==================== DAY 4 開始 ==================== -->
+        <div class="day-title">DAY 4 06.29 小樽</div>
+
+        <div class="timeline">
+            
+            <div class="timeline-item">
+                <span class="time"><08:00</span>
+                <div class="title">富良野 → 小樽</div>
+                <span class="tag tag-transport">交通</span>
+                <p class="description">開著我們的大噗噗出發</p>
+            </div>
+
+            <div class="timeline-item">
+                <span class="time">11:00</span>
+                <div class="title">午餐：三角市場</div>
+                <span class="tag tag-food">美食</span>
+                <img src="https://kimiyo.tw/wp-content/uploads/2025/03/20260428102941_0_0a3e1f.jpg" style="max-width: 100%; height: auto;">
+                <a href="http://otaru-sankaku.com/access.html" target="_blank" class="btn">網站介紹</a>
+                <p class="description">主打：海鮮、生魚片</p>
+            </div>
+
+              <div class="timeline-item">
+                <span class="time">13:00</span>
+                <div class="title">堺筋通商店街</div>
+                <span class="tag tag-scenery">景點</span> 
+                <a href="https://www.gltjp.com/zh-hant/directory/item/14743/" target="_blank" class="btn">網站介紹</a>
+                <p class="description">必吃甜點三巨頭：LeTAO總店（雙層起司蛋糕）、六花亭、北菓樓（年輪蛋糕）都在這條街上<BR>工藝精品：著名的玻璃工藝品店北一硝子館、大正硝子館，以及精緻的小樽音樂盒堂（蒸汽鐘）</p>
+            </div>
+
+            <div class="timeline-item">
+                <span class="time">13:05</span>
+                <div class="title">備案-小樽坐船遊河</div>
+                <span class="tag tag-scenery">景點</span> 
+                <a href="https://otaru.cc/zh/" target="_blank" class="btn">網站介紹</a>
+                <p class="description">這是要付費買船票，並且有限時間，若有想要報名的人可以提出來</P>
+            </div>
+
+            <div class="timeline-item">
+                <span class="time">17:30</span>
+                <div class="title">晚餐：若鶏時代 なると 本店</div>
+                <span class="tag tag-food">美食</span>
+                <img src="https://nellydyu.tw/wp-content/uploads/20260227161108_0_0974ef.jpg" style="max-width: 100%; height: auto;">
+                <a href="http://otaru-naruto.jp/index.html" target="_blank" class="btn">介紹網站</a>
+                <p class="description">超威半雞套餐先來一份<BR>地址：3 Chome-16-13 Inaho, Otaru, Hokkaido 047-0032日本</p>
+            </div>
+
+            <div class="timeline-item">
+                <span class="time"><19:00</span>
+                <div class="title">小樽 → 札幌</div>
+                <span class="tag tag-hotel">住宿</span>
+                <p class="description">住宿名稱	舒適的札幌<br>地址：3-17, Minami 4-jo Nishi 16-chome, Chuo-ku, Sapporo, Hokkaido</p>
+            </div>
+          </div>
+
+                
+        <!-- ==================== DAY 4 結束 ==================== -->
 </div>
 </div>
 
@@ -174,6 +538,84 @@ header h1 { font-size:2.2rem; }
 <div class="day-title">DAY 5 06/30 札幌</div>
 <div class="timeline">
 <!-- DAY5 原內容 -->
+
+     <!-- ==================== DAY 5 開始 ==================== -->
+        <div class="day-title">DAY 5 06.30 札幌</div>
+
+        <div class="timeline">
+            
+            <div class="timeline-item">
+                <span class="time"><08:00</span>
+                <div class="title">早餐：二條市場</div>
+                <span class="tag tag-food">美食</span>
+                <img src="https://mimigo.tw/wp-content/uploads/20180817162556_67.jpg" style="max-width: 100%; height: auto;">
+                <a href="https://www.gltjp.com/zh-hant/article/item/20443/" target="_blank" class="btn">網站介紹</a>
+                <p class="description">海鮮丼飯，帝王蟹，自選美食<BR>停車費用：使用合約停車場，每間店消費滿2,000日圓可免費1小時</p>
+            </div>
+
+              <div class="timeline-item">
+                <span class="time">10:00</span>
+                <div class="title">大亨要去逛西松屋</div>
+                <span class="tag tag-scenery">景點</span> 
+                <p class="description">全是賣小朋友的東西，會放生大亨家在這裡</p>
+            </div>
+
+            <div class="timeline-item">
+                <span class="time">10:20</span>
+                <div class="title">Ario 札幌購物中心</div>
+                <span class="tag tag-scenery">景點</span> 
+                <p class="description">大夥有需要採買的，可在這裡逛逛，吹冷氣<BR>營業時間：約10:00–21:00 (周一至周日，沒有公休日)<BR>地址：9 Chome-2-20 Kita 7 Johigashi, Higashi Ward, Sapporo, Hokkaido 065-8518日本</p>
+            </div>
+                
+            <div class="timeline-item">
+                <span class="time">12:00</span>
+                <div class="title">午餐：兩班人馬各自解決</div>
+                <span class="tag tag-food">美食</span>
+            </div>
+
+            <div class="timeline-item">
+                <span class="time">13:00</span>
+                <div class="title">AOAO SAPPORO水族館(大亨家)</div>
+                <span class="tag tag-scenery">景點</span> 
+                <img src="https://img.bigfang.tw/2024/05/1716291510-e0e28452229af52e70f87dd03c3a30c2.jpg" style="max-width: 100%; height: auto;">
+                <a href="https://aoao-sapporo.blue/" target="_blank" class="btn">網站介紹</a>
+                <p class="description">大亨家會自行坐大眾運輸前往，有興趣的人可以同行<BR>坐公車，250日元一人，車程約為四十分鐘<BR>門票2200日元一人</p>
+            </div>
+
+           <div class="timeline-item">
+                <span class="time">17:00</span>
+                <div class="title">Espresso D'Works<BR>朋友大推的吐司店</div>
+                <span class="tag tag-food">美食</span>
+                <p class="description">去買買想吃的外帶去，和隔天的早餐</p>
+            </div>
+
+            <div class="timeline-item">
+                <span class="time">17:30</span>
+                <div class="title">BARISTART COFFEE<BR>朋友大推的咖啡店</div>
+                <span class="tag tag-food">美食</span>
+                <img src="https://www.baristartcoffee.com/wp-content/uploads/2019/06/banner_sapporo-1.jpg" style="max-width: 100%; height: auto;">
+                <a href="https://www.baristartcoffee.com" target="_blank" class="btn">網站介紹</a>
+                <p class="description">可以自選豆源</p>
+            </div>
+        
+             <div class="timeline-item">
+                <span class="time">18:00</span>
+                <div class="title">晚餐：吉山商店 狸小路店</div>
+                <span class="tag tag-food">美食</span>
+                 <img src="https://img.bigfang.tw/2024/05/1716297718-9414a8f5b810972c3c9a0e2860c07532.jpg" style="max-width: 100%; height: auto;">
+                <p class="description">焙煎芝麻味噌拉麵 推推<BR></P>
+            </div>
+        
+             <div class="timeline-item">
+                <span class="time">20:00</span>
+                <div class="title">備案-狸小路商店街</div>
+                <span class="tag tag-scenery">景點、伴手禮</span> 
+                <p class="description">吃完飯還想晃晃的人就繼續，想先行回住宿休息的人也可以先回去喲<BR>還剩一堆日幣但不想回台灣兌換回來的人，請盡情消費吧</P>
+            </div>
+        </div>
+
+        <!-- ==================== DAY 5 結束 ==================== -->
+
 </div>
 </div>
 
@@ -181,7 +623,43 @@ header h1 { font-size:2.2rem; }
 <div id="day6" class="day-content">
 <div class="day-title">DAY 6 07/01 札幌</div>
 <div class="timeline">
-<!-- DAY6 原內容 -->
+
+<!-- ==================== DAY 6 開始 ==================== -->
+
+        <div class="day-title">DAY 6 07.01 札幌</div>
+
+        <div class="timeline">    
+            
+            <div class="timeline-item">
+                <span class="time">08:00準時出發</span>
+                <div class="title">札幌 → 千歲租車公司</div>
+                <span class="tag tag-transport">交通</span>
+                <p class="description">開著我們的大噗噗出發<BR>車程約莫為一個小時</p>
+            </div>
+
+              <div class="timeline-item">
+                <span class="time">09:00</span>
+                <div class="title">租車公司CAR RENTAL HOKKAIDO </div>
+               <span class="tag tag-transport">交通</span>
+                <p class="description">完成點交後，會由租車公司載我們去新千歲機場</p>
+            </div>
+
+            <div class="timeline-item">
+                <span class="time">10:00</span>
+                <div class="title">新千歲機場</div>
+               <span class="tag tag-transport">交通</span>
+                <p class="description">報到完成後，就在機場裡用午餐<BR>可以把第一天看到想吃卻沒吃到的，全都吃回來</p>
+            </div>
+
+            <div class="timeline-item">
+                <span class="time">12:05(日本時間) - 15:20(台灣時間)</span>
+                <div class="title">新千歲機場 → 桃園機場</div>
+                <span class="tag tag-transport">交通</span>
+                <p class="description">搭乘虎航 IT235 班機<br>抵達後各自有司機來接機回家嚕</p>
+            </div>
+        </div>
+
+    
 </div>
 </div>
 

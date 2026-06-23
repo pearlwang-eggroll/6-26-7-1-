@@ -3,47 +3,40 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>2026北海道旅遊APP</title>
+<title>2026年北海道之旅</title>
 
 <style>
+* { box-sizing:border-box; margin:0; padding:0; font-family:'Segoe UI', Microsoft JhengHei, sans-serif; }
 
-*{margin:0;padding:0;box-sizing:border-box;font-family:Microsoft JhengHei;}
+body { background:#f4f7f6; color:#333; padding:20px; }
 
-body{
-    background:#f5f7fa;
-}
-
-/* header */
-header{
-    position:sticky;
-    top:0;
-    z-index:10;
+header {
+    text-align:center;
+    padding:40px 0;
     background:linear-gradient(135deg,#4ca1af,#2c3e50);
     color:white;
-    text-align:center;
-    padding:20px 10px;
+    border-radius:8px;
+    margin-bottom:15px;
 }
+
+header h1 { font-size:2.2rem; }
 
 /* tabs */
 .tabs{
     display:flex;
-    overflow-x:auto;
-    gap:8px;
-    padding:10px;
-    background:white;
-    position:sticky;
-    top:80px;
-    z-index:9;
+    flex-wrap:wrap;
+    justify-content:center;
+    gap:10px;
+    margin:20px 0 30px;
 }
 
 .tab-btn{
-    flex:0 0 auto;
-    padding:8px 14px;
     border:none;
+    padding:8px 14px;
     border-radius:20px;
-    background:#e0e0e0;
+    background:#dfe6e9;
     cursor:pointer;
-    white-space:nowrap;
+    font-weight:bold;
 }
 
 .tab-btn.active{
@@ -51,51 +44,65 @@ header{
     color:white;
 }
 
-/* pages */
-.page{
-    display:none;
-    padding:15px;
-    max-width:800px;
-    margin:auto;
-}
-
-.page.active{
-    display:block;
-}
-
-/* card */
-.card{
-    background:white;
-    padding:15px;
-    margin:10px 0;
-    border-radius:10px;
-    box-shadow:0 2px 8px rgba(0,0,0,0.08);
-}
+/* page */
+.day-content{ display:none; }
+.day-content.active{ display:block; }
 
 /* timeline */
+.container{ max-width:800px; margin:auto; }
+
+.day-title{
+    background:#2c3e50;
+    color:white;
+    padding:10px 20px;
+    border-radius:20px;
+    display:inline-block;
+    margin:20px 0;
+}
+
 .timeline{
-    border-left:3px solid #4ca1af;
-    margin-left:10px;
-    padding-left:15px;
+    position:relative;
+    padding-left:30px;
+    margin-bottom:40px;
 }
 
-.item{
-    margin-bottom:15px;
+.timeline::before{
+    content:'';
+    position:absolute;
+    left:5px;
+    top:0;
+    width:4px;
+    height:100%;
+    background:#4ca1af;
 }
 
-/* buttons */
-.nav-btns{
-    display:flex;
-    justify-content:space-between;
-    margin:15px 0;
-}
-
-.nav-btns button{
-    padding:8px 14px;
-    border:none;
+.timeline-item{
+    background:white;
+    padding:20px;
+    margin-bottom:20px;
     border-radius:8px;
+    box-shadow:0 3px 10px rgba(0,0,0,0.05);
+}
+
+.time{ color:#4ca1af; font-weight:bold; display:block; margin-bottom:5px; }
+
+.title{ font-size:1.2rem; margin-bottom:8px; }
+
+.description{ font-size:0.95rem; color:#666; line-height:1.6; }
+
+.tag{ display:inline-block; padding:3px 10px; border-radius:12px; font-size:12px; margin-top:5px; }
+.tag-food{ background:#ffeaa7; }
+.tag-scenery{ background:#dff9fb; }
+.tag-transport{ background:#dfe6e9; }
+
+.btn{
+    display:inline-block;
+    margin-top:8px;
+    padding:6px 12px;
     background:#4ca1af;
     color:white;
+    text-decoration:none;
+    border-radius:6px;
 }
 
 </style>
@@ -104,106 +111,94 @@ header{
 <body>
 
 <header>
-<h2>2026 北海道旅遊 APP</h2>
+<h1>2026年北海道之旅</h1>
+<p>06/26 ~ 07/01</p>
 </header>
 
 <!-- tabs -->
 <div class="tabs">
-<button class="tab-btn active" onclick="go('home',this)">🏠</button>
-<button class="tab-btn" onclick="go('d1',this)">06/26</button>
-<button class="tab-btn" onclick="go('d2',this)">06/27</button>
-<button class="tab-btn" onclick="go('d3',this)">06/28</button>
-<button class="tab-btn" onclick="go('d4',this)">06/29</button>
-<button class="tab-btn" onclick="go('d5',this)">06/30</button>
-<button class="tab-btn" onclick="go('d6',this)">07/01</button>
+<button class="tab-btn active" onclick="showPage('home',this)">🏠 首頁</button>
+<button class="tab-btn" onclick="showPage('day1',this)">06/26</button>
+<button class="tab-btn" onclick="showPage('day2',this)">06/27</button>
+<button class="tab-btn" onclick="showPage('day3',this)">06/28</button>
+<button class="tab-btn" onclick="showPage('day4',this)">06/29</button>
+<button class="tab-btn" onclick="showPage('day5',this)">06/30</button>
+<button class="tab-btn" onclick="showPage('day6',this)">07/01</button>
 </div>
+
+<div class="container">
 
 <!-- HOME -->
-<div id="home" class="page active">
+<div id="home" class="day-content active">
 
-<div class="card">
-<h3>🌤 天氣</h3>
-<p>北海道 10°C ~ 26°C</p>
-</div>
-
-<div class="card">
-<h3>🧳 行李清單</h3>
-<p>護照 / 充電器 / 外套 / 現金 / 行動電源</p>
-</div>
-
-<div class="card">
-<h3>📌 旅遊宣言</h3>
-<p>開心最重要，不趕行程，不生氣，只享受</p>
-</div>
+    <!-- 👉 你原本 intro-section 放這裡（完全不動） -->
+    <!-- 我這裡先保留位置 -->
+    <p style="text-align:center;">👇 旅遊前言請保留你原本內容貼回來</p>
 
 </div>
 
-<!-- DAY 1 -->
-<div id="d1" class="page">
-<h3>DAY 1 06/26</h3>
+<!-- DAY1（你原 DAY1） -->
+<div id="day1" class="day-content">
+<div class="day-title">DAY 1 06/26 富良野</div>
 <div class="timeline">
-<div class="item">✈️ 機場 → 北海道</div>
+<!-- 你 DAY1 原內容貼這裡 -->
 </div>
 </div>
 
-<!-- DAY 2 -->
-<div id="d2" class="page">
-<h3>DAY 2 06/27</h3>
+<!-- DAY2 -->
+<div id="day2" class="day-content">
+<div class="day-title">DAY 2 06/27 美瑛</div>
 <div class="timeline">
-<div class="item">🌊 青池 / 白鬚瀑布</div>
+<!-- DAY2 原內容 -->
 </div>
 </div>
 
-<!-- DAY 3 -->
-<div id="d3" class="page">
-<h3>DAY 3 06/28</h3>
-<div class="timeline"></div>
+<!-- DAY3 -->
+<div id="day3" class="day-content">
+<div class="day-title">DAY 3 06/28 富良野</div>
+<div class="timeline">
+<!-- DAY3 原內容 -->
+</div>
 </div>
 
-<!-- DAY 4 -->
-<div id="d4" class="page"></div>
+<!-- DAY4 -->
+<div id="day4" class="day-content">
+<div class="day-title">DAY 4 06/29 小樽</div>
+<div class="timeline">
+<!-- DAY4 原內容 -->
+</div>
+</div>
 
-<!-- DAY 5 -->
-<div id="d5" class="page"></div>
+<!-- DAY5 -->
+<div id="day5" class="day-content">
+<div class="day-title">DAY 5 06/30 札幌</div>
+<div class="timeline">
+<!-- DAY5 原內容 -->
+</div>
+</div>
 
-<!-- DAY 6 -->
-<div id="d6" class="page"></div>
+<!-- DAY6 -->
+<div id="day6" class="day-content">
+<div class="day-title">DAY 6 07/01 札幌</div>
+<div class="timeline">
+<!-- DAY6 原內容 -->
+</div>
+</div>
+
+</div>
 
 <script>
+function showPage(id,btn){
 
-let current = "home";
-
-function go(id,btn){
-
-    document.querySelectorAll('.page')
-        .forEach(p=>p.classList.remove('active'));
+    document.querySelectorAll('.day-content')
+        .forEach(e=>e.classList.remove('active'));
 
     document.querySelectorAll('.tab-btn')
-        .forEach(b=>b.classList.remove('active'));
+        .forEach(e=>e.classList.remove('active'));
 
     document.getElementById(id).classList.add('active');
     btn.classList.add('active');
-
-    current = id;
-    localStorage.setItem("trip_page",id);
 }
-
-/* 記住頁面 */
-window.onload = function(){
-    const saved = localStorage.getItem("trip_page");
-    if(saved){
-        document.querySelectorAll('.page').forEach(p=>p.classList.remove('active'));
-        document.querySelectorAll('.tab-btn').forEach(b=>b.classList.remove('active'));
-
-        document.getElementById(saved).classList.add('active');
-
-        let btn = [...document.querySelectorAll('.tab-btn')]
-            .find(b=>b.textContent.includes(saved.replace('d','')));
-
-        if(btn) btn.classList.add('active');
-    }
-}
-
 </script>
 
 </body>

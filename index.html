@@ -54,6 +54,149 @@
 </head>
 <body>
 
+<!-- ==================== 旅遊前言區塊 開始 ==================== -->
+<style>
+    /* 前言區塊專用樣式 */
+    .intro-section {
+        max-width: 800px;
+        margin: -1rem auto 2rem auto;
+        padding: 0 1rem;
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 1.5rem;
+    }
+    @media screen and (max-width: 768px) {
+        .intro-section {
+            grid-template-columns: 1fr;
+        }
+    }
+    .intro-card {
+        background: white;
+        padding: 1.5rem;
+        border-radius: 12px;
+        box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+        border-top: 5px solid #2a5298;
+    }
+    .intro-card h2 {
+        color: #1e3c72;
+        font-size: 1.2rem;
+        margin-bottom: 1rem;
+        display: flex;
+        align-items: center;
+        gap: 0.5rem;
+    }
+    /* 天氣小工具樣式 */
+    .weather-widget {
+        display: flex;
+        align-items: center;
+        justify-content: space-around;
+        background: #f0f4f8;
+        padding: 1rem;
+        border-radius: 8px;
+        margin-bottom: 0.8rem;
+    }
+    .weather-temp {
+        font-size: 1.8rem;
+        font-weight: bold;
+        color: #1e3c72;
+    }
+    .weather-info {
+        font-size: 0.9rem;
+        color: #555;
+    }
+    /* 行李清單樣式 */
+    .packing-list {
+        list-style: none;
+    }
+    .packing-item {
+        display: flex;
+        align-items: center;
+        gap: 0.5rem;
+        margin-bottom: 0.5rem;
+        font-size: 0.95rem;
+        color: #444;
+        cursor: pointer;
+    }
+    .packing-item input[type="checkbox"] {
+        width: 16px;
+        height: 16px;
+        cursor: pointer;
+    }
+    /* 旅遊宣言樣式 */
+    .declaration-card {
+        grid-column: 1 / -1;
+        background: linear-gradient(135deg, #fff9db 0%, #fff3bf 100%);
+        border-top: 5px solid #f59f00;
+    }
+    .declaration-text {
+        font-style: italic;
+        color: #664d03;
+        line-height: 1.8;
+        font-size: 1.05rem;
+        position: relative;
+        padding-left: 1.5rem;
+    }
+    .declaration-text::before {
+        content: "“";
+        font-size: 3rem;
+        position: absolute;
+        left: -0.5rem;
+        top: -1rem;
+        color: #fab005;
+        opacity: 0.5;
+    }
+</style>
+
+<div class="intro-section">
+    
+    <!-- 1. 當地天氣預報卡片 -->
+    <div class="intro-card">
+        <h2>☀️ 目的地天氣預報</h2>
+        <div class="weather-widget">
+            <div style="font-size: 2.5rem;">🌤️</div>
+            <div>
+                <div class="weather-temp">12°C - 25°C</div>
+                <div class="weather-info">北海道夏季 | 日夜溫差大 | 前兩天有下雨機率</div>
+            </div>
+        </div>
+        <p class="tips" style="margin-top: 0.5rem;">
+            06.26  16°C - 26°C 降雨機率為 80%。 降雨約為 12 公釐<BR>
+            06.27  14°C - 21°C 降雨機率為 40%<BR>
+            06.28  12°C - 21°C<BR>
+            06.29  13°C - 24°C<BR>
+            06.30  14°C - 25°C<BR>
+            07.01  15°C - 26°C
+            
+        </p>
+    </div>
+
+    <!-- 2. 行李準備檢查清單 -->
+    <div class="intro-card">
+        <h2>🧳 出發前行李檢查</h2>
+        <ul class="packing-list">
+            <li class="packing-item"><input type="checkbox"> 護照正本 (效期需滿6個月以上)</li>
+            <li class="packing-item"><input type="checkbox"> 手機、漫遊網卡、充電線</li>
+            <li class="packing-item"><input type="checkbox"> 行動電源 (需隨身攜帶，不可托運)</li>
+            <li class="packing-item"><input type="checkbox"> 常用藥品 (血壓藥、慢性病藥、OK蹦)</li>
+            <li class="packing-item"><input type="checkbox"> 舒適好走的運動鞋或健走鞋</li>
+            <li class="packing-item"><input type="checkbox"> 怕冷的請備薄長袖，請所有人都帶件外套</li>
+            <li class="packing-item"><input type="checkbox"> 日幣現金、海外高回饋信用卡</li>
+        </ul>
+    </div>
+
+    <!-- 3. 長輩旅遊宣言（橫跨兩欄） -->
+    <div class="intro-card declaration-card">
+        <h2>平安快樂・家族旅遊共同宣言</h2>
+        <div class="declaration-text">
+            <strong>「出來玩，最要緊的就是歡喜與平安！」</strong><br>
+            本次旅程特別恪守原則：不生氣、不比較、不抱怨、不錯過<BR>要多拍照、要享受當下、累了隨時要休息！<BR>遇到美景就停下來，肚子餓了就吃美食<BR>沿途的風景因為有你們的陪伴才是最珍貴的<BR>祝福大家滿載而歸！
+        </div>
+    </div>
+
+</div>
+<!-- ==================== 旅遊前言區塊 結束 ==================== -->
+    
+
     <!-- 網站標頭：請自行修改標題與日期 -->
     <header>
         <h1>2026年北海道之旅</h1>
